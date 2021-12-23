@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minesweeper</title>
+  <link rel="stylesheet" href="./public/style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header class="c-header">
+      <h2>Minesweeper</h2>
+    </header>
+    <div class="c-game">
+      <div class="c-stats">
+        <div class="c-stat">30x20 grid</div>
+        <div class="c-stat">
+          <span>Flags: </span>
+          <span id="flags"></span>
+        </div>
+      </div>
+      <div id="board" class="c-board"></div>
+      <div class="c-options">
+        <button id="new-game" class="c-button">New Game</button>
+      </div>
+    </div>
+  </main>
+  <script src="./public/game.js"></script>
+</body>
+</html>
