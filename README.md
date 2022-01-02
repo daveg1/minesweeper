@@ -1,5 +1,5 @@
 # Minesweeper
-A simple minesweeper game built with es6 JS constructs and bundled with webpack.
+A simple minesweeper game written in ES6 JS and bundled with Webpack.
 
 ### Usage
 ```sh

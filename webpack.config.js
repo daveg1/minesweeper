@@ -1,14 +1,13 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const dist_path = path.join(__dirname, 'dist')
+const public_path = path.join(__dirname, 'public')
 
 module.exports = {
-  mode: 'production',
+  mode: process.env.NODE_ENV || 'production',
 
-  entry: './src/index.js',
   output: {
     filename: 'game.js',
-    path: path.join(dist_path, 'public')
   },
 
   module: {
@@ -23,13 +22,21 @@ module.exports = {
     ]
   },
 
+  plugins: [
+    // Script files get linked automatically.
+    new HtmlWebpackPlugin({
+      template: 'public/index.html'
+    })
+  ],
+
   devtool: 'source-map',
 
   devServer: {
     static: {
-      directory: dist_path
+      directory: public_path
     },
     compress: true,
+    hot: true,
     port: 9000
   }
 }
