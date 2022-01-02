@@ -1,0 +1,87 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --cell-size: 25px;
+}
+
+body {
+  background-color: #f1f1f1;
+  font-family: 'segoe ui', arial, helvetica, sans-serif;
+}
+
+.wrap {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  margin-inline: auto;
+}
+
+.c-header {
+  text-align: center;
+}
+
+.c-stats {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 5px;
+  width: 100%;
+  user-select: none;
+}
+
+.c-stat {
+  line-height: 3rem;
+}
+
+.c-board {
+  --w: 10;
+  --h: 10;
+  border: 5px solid #aaa;
+  display: grid;
+  grid-template-columns: repeat(var(--w), var(--cell-size));
+  grid-template-rows: repeat(var(--h), var(--cell-size));
+}
+
+.c-cell {
+  background-color: #c6c6c6;
+  border: 5px outset;
+  display: grid;
+  font-family: monospace;
+  font-size: 1.5em;
+  font-weight: bold;
+  height: var(--cell-size);
+  place-items: center;
+  user-select: none;
+}
+
+.c-cell[data-state="pressed"],
+.c-cell[data-state="opened"] {
+  border: 0;
+  box-shadow: 1px 1px #888 inset;
+}
+
+.c-cell[data-state="flagged"] {
+  background-image: url('./flag.svg');
+  background-size: cover;
+}
+
+.c-cell[data-state="exploded"] {
+  background-color: crimson;
+}
+
+.c-cell.v-1 { color: blue; }
+.c-cell.v-2 { color: green; }
+.c-cell.v-3 { color: darkred; }
+
+.c-options {
+  margin-block: 1rem;
+}
+
+.c-button {
+  background-color: #c6c6c6;
+  cursor: pointer;
+  line-height: 30px;
+  padding-inline: 1rem
+}
