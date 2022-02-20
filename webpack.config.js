@@ -1,39 +1,38 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-const public_path = path.join(__dirname, 'public')
+const src_path = path.join(__dirname, 'src')
+const out_path = path.join(__dirname, 'docs')
 
 module.exports = {
   mode: process.env.NODE_ENV || 'production',
 
+  entry: src_path,
+
   output: {
     filename: 'game.js',
+    path: path.join(out_path, 'public'),
   },
 
   module: {
     rules: [
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: src_path,
         use: {
-          loader: 'babel-loader'
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
         }
-      }
+      },
     ]
   },
-
-  plugins: [
-    // Script files get linked automatically.
-    new HtmlWebpackPlugin({
-      template: 'public/index.html'
-    })
-  ],
 
   devtool: 'source-map',
 
   devServer: {
     static: {
-      directory: public_path
+      directory: out_path
     },
     compress: true,
     hot: true,
